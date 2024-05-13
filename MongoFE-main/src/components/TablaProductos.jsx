@@ -10,7 +10,9 @@ function TablaProductos(props) {
     useEffect(() => {
         // Realizar una solicitud GET para obtener los productos de tu base de datos
         axios
-            .get("http://autenticacion-global-dreamlab.azurewebsites.net/api/user")
+            .get(
+                "http://autenticacion-global-dreamlab.azurewebsites.net/api/user"
+            )
             .then((response) => {
                 setProducts(response.data);
                 console.log(response.data);
@@ -23,7 +25,9 @@ function TablaProductos(props) {
     const handleDelete = (productId) => {
         // Realizar una solicitud DELETE para eliminar el producto de la base de datos
         axios
-            .delete(`http://autenticacion-global-dreamlab.azurewebsites.net/api/user/${productId}`)
+            .delete(
+                `http://autenticacion-global-dreamlab.azurewebsites.net/api/user/${productId}`
+            )
             .then(() => {
                 // Actualizar el estado eliminando el producto de la lista
                 setProducts(
@@ -47,7 +51,6 @@ function TablaProductos(props) {
                 editingProduct
             )
             .then(() => {
-
                 console.log(editingProduct);
 
                 // Actualizar el estado y limpiar el producto en edición
@@ -90,11 +93,9 @@ function TablaProductos(props) {
                                 <th className="w-1/4 px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-blue-500">
                                     Contraseña
                                 </th>
-                                {isAdmin !== "root" && (
-                                    <th className="w-1/4 px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-blue-400">
-                                        Acciones
-                                    </th>
-                                )}
+                                <th className="w-1/4 px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-blue-400">
+                                    Acciones
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -127,11 +128,14 @@ function TablaProductos(props) {
                                         editingProduct.id === product.id ? (
                                             <input
                                                 type="text"
-                                                value={editingProduct.Id_Credencial}
+                                                value={
+                                                    editingProduct.Id_Credencial
+                                                }
                                                 onChange={(e) =>
                                                     setEditingProduct({
                                                         ...editingProduct,
-                                                        Id_Credencial: e.target.value,
+                                                        Id_Credencial:
+                                                            e.target.value,
                                                     })
                                                 }
                                             />
@@ -150,7 +154,8 @@ function TablaProductos(props) {
                                                     onChange={(e) =>
                                                         setEditingProduct({
                                                             ...editingProduct,
-                                                            Email: e.target.value,
+                                                            Email: e.target
+                                                                .value,
                                                         })
                                                     }
                                                     className="w-20"
@@ -169,7 +174,8 @@ function TablaProductos(props) {
                                                 onChange={(e) =>
                                                     setEditingProduct({
                                                         ...editingProduct,
-                                                        Password: e.target.value,
+                                                        Password:
+                                                            e.target.value,
                                                     })
                                                 }
                                             />
@@ -177,48 +183,47 @@ function TablaProductos(props) {
                                             "######"
                                         )}
                                     </td>
-                                    {isAdmin !== "root" && (
-                                        <td className="px-4 py-2">
-                                            {editingProduct &&
-                                            editingProduct.id === product.id ? (
-                                                <div className="flex">
-                                                    <button
-                                                        onClick={handleSave}
-                                                        className="flex-1 bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded mr-1"
-                                                    >
-                                                        Guardar
-                                                    </button>
-                                                    <button
-                                                        onClick={() =>
-                                                            setEditingProduct(null)
-                                                        }
-                                                        className="flex-1 bg-gray-500 hover:bg-gray-700 text-white font-bold py-1 px-2 rounded ml-1"
-                                                    >
-                                                        Cancelar
-                                                    </button>
-                                                </div>
-                                            ) : (
-                                                <div className="flex">
-                                                    <button
-                                                        onClick={() =>
-                                                            handleEdit(product)
-                                                        }
-                                                        className="flex-1 bg-blue-200 hover:bg-blue-500 text-white font-bold py-1 px-2 rounded mr-1"
-                                                    >
-                                                        ✏️
-                                                    </button>
-                                                    <button
-                                                        onClick={() =>
-                                                            handleDelete(product.id)
-                                                        }
-                                                        className="flex-1 bg-red-200 hover:bg-red-500 text-white font-bold py-1 px-2 rounded ml-1"
-                                                    >
-                                                        🗑️
-                                                    </button>
-                                                </div>
-                                            )}
-                                        </td>
-                                    )}
+
+                                    <td className="px-4 py-2">
+                                        {editingProduct &&
+                                        editingProduct.id === product.id ? (
+                                            <div className="flex">
+                                                <button
+                                                    onClick={handleSave}
+                                                    className="flex-1 bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded mr-1"
+                                                >
+                                                    Guardar
+                                                </button>
+                                                <button
+                                                    onClick={() =>
+                                                        setEditingProduct(null)
+                                                    }
+                                                    className="flex-1 bg-gray-500 hover:bg-gray-700 text-white font-bold py-1 px-2 rounded ml-1"
+                                                >
+                                                    Cancelar
+                                                </button>
+                                            </div>
+                                        ) : (
+                                            <div className="flex">
+                                                <button
+                                                    onClick={() =>
+                                                        handleEdit(product)
+                                                    }
+                                                    className="flex-1 bg-blue-200 hover:bg-blue-500 text-white font-bold py-1 px-2 rounded mr-1"
+                                                >
+                                                    ✏️
+                                                </button>
+                                                <button
+                                                    onClick={() =>
+                                                        handleDelete(product.id)
+                                                    }
+                                                    className="flex-1 bg-red-200 hover:bg-red-500 text-white font-bold py-1 px-2 rounded ml-1"
+                                                >
+                                                    🗑️
+                                                </button>
+                                            </div>
+                                        )}
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>
