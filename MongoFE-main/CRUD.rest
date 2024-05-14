@@ -1,8 +1,8 @@
 ### Obtener a todos los usuarios
-GET http://autenticacion-global-dreamlab.azurewebsites.net/api/user
+GET https://autenticacion-global-dreamlab.azurewebsites.net/api/user
 
 ### Login
-POST http://autenticacion-global-dreamlab.azurewebsites.net/api/user/login
+POST https://autenticacion-global-dreamlab.azurewebsites.net/api/user/login
 Content-Type: application/json
 
 {

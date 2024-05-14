@@ -33,7 +33,7 @@ function InputArea2(props) {
 
         try {
             const response = await fetch(
-                "http://autenticacion-global-dreamlab.azurewebsites.net/api/user/signup",
+                "https://autenticacion-global-dreamlab.azurewebsites.net/api/user/signup",
                 {
                     method: "POST",
                     headers: {

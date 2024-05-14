@@ -11,7 +11,7 @@ function TablaProductos(props) {
         // Realizar una solicitud GET para obtener los productos de tu base de datos
         axios
             .get(
-                "http://autenticacion-global-dreamlab.azurewebsites.net/api/user"
+                "https://autenticacion-global-dreamlab.azurewebsites.net/api/user"
             )
             .then((response) => {
                 setProducts(response.data);
@@ -26,7 +26,7 @@ function TablaProductos(props) {
         // Realizar una solicitud DELETE para eliminar el producto de la base de datos
         axios
             .delete(
-                `http://autenticacion-global-dreamlab.azurewebsites.net/api/user/${productId}`
+                `https://autenticacion-global-dreamlab.azurewebsites.net/api/user/${productId}`
             )
             .then(() => {
                 // Actualizar el estado eliminando el producto de la lista
@@ -47,7 +47,7 @@ function TablaProductos(props) {
         // Realizar una solicitud PUT para actualizar el producto en la base de datos
         axios
             .put(
-                `http://autenticacion-global-dreamlab.azurewebsites.net/api/user/${editingProduct.id}`,
+                `https://autenticacion-global-dreamlab.azurewebsites.net/api/user/${editingProduct.id}`,
                 editingProduct
             )
             .then(() => {
